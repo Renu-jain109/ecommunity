@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="wrapper bg-body-tertiary">
+
+                <div class="px-5 py-4 bg-body-tertiary">
+                    <div class="pb-3">
+                        <label for="filter">Filter</label>
+                    </div>
+                    <div class="">
+                        <input type="text" name="filter" id="filter" placeholder="" class="w-100">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=" d-flex flex-row gap-3 pt-2 ms-5">
+            <button class="btn btn-primary">Apply Filter</button>
+            <button class="btn btn-secondary" routerLink="/user/addproduct">Add a Product</button>
+        </div>
+
+        <div class="col-12">
+            <div class="wrapper d-flex flex-row flex-wrap gap-5 justify-content-center align-items-center py-5 w-100">
+                <!-- for loop -->
+                <mat-card [style]="{ width: '20rem', overflow: 'hidden', height:'20rem' }"
+                    class="card-size bg-body-tertiary">
+
+                    <div class="d-flex flex-row justify-content-center pt-2">
+                        <div class="image ">
+                            <img src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/8911535/2022/11/3/a1450159-046a-4855-8589-face76d1dcf71667468227453-Campus-Men-Navy-Blue-Running-Shoes-2131667468227097-1.jpg"
+                                alt="">
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h4>title</h4>
+                        <p>brand name</p>
+                    </div>
+                    <button class="exploreBtn fs-4 text-white">Explore</button>
+                </mat-card>
+
+            </div>
+        </div>
+    </div>
+</div>
