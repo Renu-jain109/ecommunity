@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit{
     this.userService.generateToken(json).subscribe((res : any)=>{
       console.log(res);    
         this.userService.login(res.jwtToken);
-        console.log(json);
         localStorage.setItem('user',JSON.stringify(json));
 
       this.tostr.success("Login Successfully");
@@ -43,9 +42,16 @@ export class LoginComponent implements OnInit{
 
     },
     (error)=>{
-      this.tostr.error("Invalid User");
+      this.tostr.error("Invalid Login User");
     }
   )
+  };
+
+  resetPasword(){
+  }
+
+  reset(){
+    this.loginForm.reset();
   }
 
 }

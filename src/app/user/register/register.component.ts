@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   registerForm : FormGroup;
   formBuilder = inject(FormBuilder);
   registerService = inject(UserService);
-  tostr =inject(ToastrService);
+  toastr =inject(ToastrService);
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -38,16 +38,29 @@ export class RegisterComponent implements OnInit {
     };
     this.registerService.ragistration(json).subscribe((res : any)=>{
       console.log(res);
-      this.tostr.success("Registration successfully");
+
+      if(json.password !== json.confirmpassword){
+        this.toastr.error("Password not Match");
+        return ;
+      }
+
+      if(!this.registerForm.valid){
+        this.toastr.error("Please all fields required");
+        return ;
+      }
+      this.toastr.success("Registration successfully");
       this.registerForm.reset();
 
       
     },
   error=>{
-    this.tostr.error("Registration faild");
+    this.toastr.error("Registration faild");
   }
   );
     
+  };
+  reset(){
+    this.registerForm.reset();
   }
 
 }

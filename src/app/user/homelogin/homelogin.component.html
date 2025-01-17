@@ -6,23 +6,24 @@
                     <h1 class="fs-1">Welcome to Ecommunity</h1>
 
                 </div>
-                <div class="mt-4 d-flex flex-row justify-content-center gap-2 ">
-                    <div class="">
-                        <input type="text" placeholder="Product Code" class="rounded ps-2">
-                    </div>
+                <div>
+                    <form [formGroup]="productForm"  class="mt-4 d-flex flex-row justify-content-center gap-2 ">
+                        <div class="">
+                            <input type="text" placeholder="Product Code" class=" form-control rounded ps-2" formControlName="productCode" >
+                        </div>
 
-                    <div class="">
-                        <input type="text" placeholder="Product Name" class="rounded ps-2">
-                    </div>
+                        <div class="">
+                            <input type="text" placeholder="Product Name" class=" form-control rounded ps-2" formControlName="productName" >
+                        </div>
 
-                    <div class="">
-                        <input type="text" placeholder="Product Brand" class="rounded ps-2">
-                    </div>
+                        <div class="">
+                            <input type="text" placeholder="Product Brand" class=" form-control rounded ps-2" formControlName="productBrand" >
+                        </div>
 
-                    <div class="">
-                        <button class="btn btn-primary px-3 pt-1 pb-1" (click)="search()">Search</button>
-                    </div>
-
+                        <div class="">
+                            <button class="btn btn-primary px-3 pt-1 pb-1" (click)="search()">Search</button>
+                        </div>
+                    </form>
                 </div>
 
             </div>
