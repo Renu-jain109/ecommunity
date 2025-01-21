@@ -8,16 +8,61 @@
                             <h3>Submit a Review</h3>
                         </div>
                         <div class="card p-5 d-flex flex-column gap-2">
+
+                            <form [formGroup]="reviewForm" >
                             <label for="heading">Heading : </label>
-                            <input type="text" id="heading">
+                            <input type="text" id="heading" class="form-control" formControlName="heading">
+                            @if(reviewForm.get('heading').touched){
+                                <div class="text-danger">
+                                    @if(reviewForm.get('heading').errors?.['required']){
+                                        <span>This is required.</span>
+                                    }
+                                </div>
+                            }
+
                             <label for="review">Review</label>
-                            <textarea name="" id=""></textarea>
+                            <textarea id="review" class="form-control" formControlName="review"></textarea>
+
+                            @if(reviewForm.get('review').touched){
+                                <div class="text-danger">
+                                    @if(reviewForm.get('review').errors?.['required']){
+                                        <span>This is required</span>
+                                    }
+                                </div>
+                            }
                             <div class="">
                                 <label for="rating">Rating</label>
                             </div>
                             <div class="text-center pt-2">
-                                <button class="btn btn-primary rounded">Submit Review</button>
+                                <button class="btn btn-primary rounded" (click)="submitReview()">Submit Review</button>
                             </div>
+                        </form>
+                            <!-- <label for="heading">Heading : </label>
+                            <input type="text" id="heading" [(ngModel)]="form.heading" #heading="ngModel" class="form-control" required>
+                            @if(heading.touched){
+                                <div class="text-danger">
+                                    @if(heading?.errors?.['required']){
+                                        <span>This is required.</span>
+                                    }
+                                </div>
+                            }
+
+                            <label for="review">Review</label>
+                            <textarea #review="ngModel" id="review" [(ngModel)]="form.review"  class="form-control" required></textarea>
+
+                            @if(review.touched){
+                                <div class="text-danger">
+                                    @if(review?.errors?.['required']){
+                                        <span>This is required</span>
+                                    }
+                                </div>
+                            }
+                            <div class="">
+                                <label for="rating">Rating</label>
+                            </div>
+                            <div class="text-center pt-2">
+                                <button class="btn btn-primary rounded" (click)="submitReview()">Submit Review</button>
+                            </div> -->
                         </div>
         
                     </div>

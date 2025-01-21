@@ -24,29 +24,41 @@ export class UserService {
   generateToken (object : any) : Observable <any>{
     return this.http.post(environment.API_URL+"/token",object)
   };
+
   isAuthenticated() : boolean{
     return !!localStorage.getItem("token");
   };
+
   logOut(){
     localStorage.removeItem("token");
   };
 
-  addProductService(object : any) : Observable <any>{
+  addProduct(object : any) : Observable <any>{
     // return this.http.post(environment.API_URL+"/addproduct",object);
    return this.http.post(`${this.url}/addproduct`,object);
   };
-  
+
   searchProduct(object : any) : Observable <any>{
     let params = new HttpParams();
     if(object.code ){
       params = params.append('code',object.code);      
     }
-    if(object.code ){
+    if(object.name ){
       params = params.append('name',object.name);      
     }
-    if(object.code ){
+    if(object.brand ){
       params = params.append('brand',object.brand);      
     }
     return this.http.get(environment.API_URL+"/getproduct",{params});
+  };
+
+
+  getAllData() : Observable<any>{
+    return this.http.get(environment.API_URL+"/getalldata");
+
+  };
+
+  setReview(object : any) : Observable<any>{
+    return this.http.post(environment.API_URL+"/setreview",object);
   }
 }

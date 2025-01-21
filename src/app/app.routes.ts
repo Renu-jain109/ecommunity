@@ -6,7 +6,6 @@ import { AdminloginComponent } from './admin/adminlogin/adminlogin.component';
 import { ResultComponent } from './admin/result/result.component';
 import { UserresultComponent } from './user/userresult/userresult.component';
 import { AddproductComponent } from './user/addproduct/addproduct.component';
-import { FeaturedprductsComponent } from './user/featuredprducts/featuredprducts.component';
 import { ReviewComponent } from './user/review/review.component';
 import { PostreviewComponent } from './user/postreview/postreview.component';
 
@@ -38,10 +37,6 @@ export const routes: Routes = [
     {
         path:'user/addproduct',
         component:AddproductComponent
-    },
-    {
-        path:'user/featuredproduct',
-        component:FeaturedprductsComponent
     },
     {
         path:'user/review',

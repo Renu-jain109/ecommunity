@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { CardModule } from 'primeng/card';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-userresult',
@@ -13,10 +13,18 @@ import { RouterLink } from '@angular/router';
   styleUrl: './userresult.component.css'
 })
 export class UserresultComponent implements OnInit {
+  productData : any;
+  constructor(private router : Router){}
+
   ngOnInit(): void {
+    this.productData = history.state.data;  
+    console.log(this.productData);
+      
   }
 
-  value
+  explore(product : any){
+    this.router.navigate(['/user/review'],{state : {data : product}});
+    
+  }
 
-  products : any = {}
 }

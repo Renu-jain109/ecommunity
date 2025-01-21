@@ -7,61 +7,59 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-addproduct',
   standalone: true,
-  imports: [FormsModule,ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule],
   templateUrl: './addproduct.component.html',
   styleUrl: './addproduct.component.css'
 })
 export class AddproductComponent implements OnInit {
-  addProductForm : FormGroup;
+  addProductForm: FormGroup;
   Fb = inject(FormBuilder);
   router = inject(Router);
   userService = inject(UserService);
   toastr = inject(ToastrService);
+  productArr: any[] = [];
+
 
   ngOnInit(): void {
     this.addProductForm = this.Fb.group({
-      productname : ['',Validators.required],
-      productbrand : ['',Validators.required],
-      productcode : ['',Validators.required],
-      productdescription : ['',Validators.required],
-      productimagelink : ['',Validators.required],
+      productname: ['', Validators.required],
+      productbrand: ['', Validators.required],
+      productcode: ['', Validators.required],
+      productdescription: ['', Validators.required],
+      productimagelink: ['', Validators.required],
     })
 
   }
 
-  submit(){
+  submit() {
     const json = {
-      name : this.addProductForm.get('productname').value,
-      brand : this.addProductForm.get('productbrand').value,
-      code : this.addProductForm.get('productcode').value,
-      description : this.addProductForm.get('productdescription').value,
-      image : this.addProductForm.get('productimagelink').value,
+      name: this.addProductForm.get('productname').value,
+      brand: this.addProductForm.get('productbrand').value,
+      code: this.addProductForm.get('productcode').value,
+      description: this.addProductForm.get('productdescription').value,
+      image: this.addProductForm.get('productimagelink').value,
     }
 
-this.userService.addProductService(json).subscribe((res : any)=>{
-  console.log(res);
-  this.toastr.success("Add Product Successfully");
-  
-},
-(error)=>{
-  this.toastr.error("Product not Save");
-  console.log(error);
-  
-}
-)
+    this.userService.addProduct(json).subscribe((res: any) => {
+      console.log(res);
 
-  //   this.userService.addProductService(json).subscribe((res : any)=>{
-  //     console.log(res);
-  //     this.toastr.success("Add Product Successfully");
-      
-  //   },
-  //   (error)=>{
-  //     this.toastr.error("Product not Save");
-  //     console.log(error);
-      
+      if (this.addProductForm.invalid) {
+        this.toastr.error("All Fields Required.");
+        return;
+      }
+      this.productArr.push(res);
+      this.toastr.success("Add Product Successfully");
+      console.log(this.router.navigate(['/user/result'], { state: { data: this.productArr } }));
 
-  //   }
-  // )
-    // this.router.navigate(['/user/review']);
+
+    },
+      (error) => {
+        this.toastr.error("Product not Save");
+        console.log(error);
+
+      })
+  };
+  reset(){
+    this.addProductForm.reset();
   }
 }

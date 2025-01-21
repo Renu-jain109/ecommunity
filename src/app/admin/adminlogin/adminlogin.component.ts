@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-adminlogin',
@@ -12,6 +13,7 @@ import { RouterLink } from '@angular/router';
 export class AdminloginComponent implements OnInit {
   adminLoginForm : FormGroup;
   Fb = inject(FormBuilder);
+  adminService = inject(AdminService);
 
   ngOnInit(): void {
     this.adminLoginForm = this.Fb.group({

@@ -9,20 +9,41 @@
 
                 <div class="mb-3">
                     <label for="productname" class="pb-2">Product Name</label>
-                    <input type="text" class="form-control" formControlName="productname" name="productname" id="productname"
-                        placeholder="Product Name">
+                    <input type="text" class="form-control" formControlName="productname" name="productname"
+                        id="productname" placeholder="Product Name">
+                    @if(addProductForm.get('productname').touched){
+                    <div class="text-danger">
+                        @if(addProductForm.get('productname').errors?.['required']){
+                        <span>This is required</span>
+                        }
+                    </div>
+                    }
                 </div>
 
                 <div class="mb-3 row ">
                     <div class=" col-md-6">
                         <label for="productbrand" class="pb-2">Product Brand</label>
-                        <input type="text" class="form-control" formControlName="productbrand" name="productbrand" id="productbrand"
-                            placeholder="Product Brand">
+                        <input type="text" class="form-control" formControlName="productbrand" name="productbrand"
+                            id="productbrand" placeholder="Product Brand">
+                        @if(addProductForm.get('productbrand').touched){
+                        <div class="text-danger">
+                            @if(addProductForm.get('productbrand').errors?.['required']){
+                            <span>This is required</span>
+                            }
+                        </div>
+                        }
                     </div>
                     <div class=" col-md-6">
                         <label for="productcode" class="pb-2">Product Code</label>
-                        <input type="text" class="form-control" formControlName="productcode" name="productcode" id="productcode"
-                            placeholder="Product Code">
+                        <input type="text" class="form-control" formControlName="productcode" name="productcode"
+                            id="productcode" placeholder="Product Code">
+                            @if(addProductForm.get('productcode').touched){
+                                <div class="text-danger">
+                                    @if(addProductForm.get('productcode').errors?.['required']){
+                                        <span>This is required</span>
+                                    }
+                                </div>
+                            }  
 
                     </div>
                 </div>
@@ -30,19 +51,35 @@
 
                 <div class="mb-3">
                     <label for="productdescription" class="pb-2">Product Description</label>
-                    <input type="text" class="form-control" formControlName="productdescription" name="productdescription" id="productdescription"
-                        placeholder="Product Description">
+                    <input type="text" class="form-control" formControlName="productdescription"
+                        name="productdescription" id="productdescription" placeholder="Product Description">
+                        @if(addProductForm.get('productdescription').touched){
+                            <div class="text-danger">
+                                @if(addProductForm.get('productdescription').errors?.['required']){
+                                    <span>This is required</span>
+                                }
+                            </div>
+                        }
                 </div>
 
                 <div class="mb-3">
                     <label for="productimagelink" class="pb-2">Product Image Link</label>
-                    <input type="text" class="form-control" formControlName="productimagelink" name="productimagelink" id="productimagelink"
-                        placeholder="Product Image Link">
+                    <input type="text" class="form-control" formControlName="productimagelink" name="productimagelink"
+                        id="productimagelink" placeholder="Product Image Link">
+                        @if(addProductForm.get('productimagelink').touched){
+                            <div class="text-danger">
+                                @if(addProductForm.get('productimagelink').errors?.['required']){
+                                    <span>This is required</span>
+                                }
+                            </div>
+                        }
+
                 </div>
 
 
-                <div class="mb-3 text-center pt-4">
+                <div class="mb-3 text-center pt-4 d-flex flex-row gap-5 justify-content-center">
                     <button type="submit" class="btn btn-primary" (click)="submit()">Submit</button>
+                    <button type="submit" class="btn btn-primary" (click)="reset()">Reset</button>
                 </div>
 
 
