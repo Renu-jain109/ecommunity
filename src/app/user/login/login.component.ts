@@ -56,12 +56,12 @@ export class LoginComponent implements OnInit {
     };
     this.userService.generateToken(json).subscribe((res: any) => {
       console.log(res);
-      console.log(this.userService.login(res.jwtToken));
+      this.userService.login(res.jwtToken);
 
-      if (this.userService.isAuthenticated()) {
-        localStorage.setItem('username', this.loginForm.get('username').value);
+      // if (this.userService.isAuthenticated()) {
+      //   localStorage.setItem('username', this.loginForm.get('username').value);
+      // }
 
-      }
       this.tostr.success("Login Successfully");
       window.location.href = '/';
 

@@ -1,5 +1,7 @@
 <!-- search product code -->
 
+<input type="text" name="" id="" (input)="getInput($event)">
+
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -119,7 +121,7 @@
                             <h4>{{products.name}}</h4>
                             <p>{{products.brand}}</p>
                         </div>
-                        <button class="exploreBtn fs-4 text-white w-100">Explore</button>
+                        <button class="exploreBtn fs-4 text-white w-100" (click)="explore(products)">Explore</button>
                     </mat-card>
 
                 </div>

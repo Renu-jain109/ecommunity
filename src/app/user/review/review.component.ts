@@ -11,18 +11,16 @@ import { Router } from '@angular/router';
 })
 export class ReviewComponent implements OnInit {
 
-  product : any ;
+  product: any;
   router = inject(Router);
 
   ngOnInit(): void {
- this.product = history.state.data;
- console.log(this.product);
-
- 
+    this.product = history.state.data;
+    console.log(this.product);
 
   }
 
-  review(){
+  review() {
     this.router.navigate(['/user/postreview']);
   }
 

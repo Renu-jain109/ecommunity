@@ -61,6 +61,16 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/user/result'], { state: { data: res } });
     });   
 
+  };
+
+  explore(products : any){
+  this.router.navigate(['/user/review'],{state : {data : products}});    
+  };
+  name = "";
+
+  getInput(event : Event){
+    console.log(event);
+    
   }
 
 }

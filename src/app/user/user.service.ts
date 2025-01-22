@@ -25,6 +25,15 @@ export class UserService {
     return this.http.post(environment.API_URL+"/token",object)
   };
 
+  getToken(){
+    return localStorage.getItem('token');
+  }
+  getUser(token : any) : Observable<any>{
+    let params = new HttpParams();
+    params= params.append('token',token);
+    return this.http.get(environment.API_URL+"/getUserName",{params});
+  }
+
   isAuthenticated() : boolean{
     return !!localStorage.getItem("token");
   };
