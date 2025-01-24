@@ -28,6 +28,7 @@ export class UserService {
   getToken(){
     return localStorage.getItem('token');
   }
+
   getUser(token : any) : Observable<any>{
     let params = new HttpParams();
     params= params.append('token',token);
@@ -67,7 +68,4 @@ export class UserService {
 
   };
 
-  setReview(object : any) : Observable<any>{
-    return this.http.post(environment.API_URL+"/setreview",object);
-  }
 }

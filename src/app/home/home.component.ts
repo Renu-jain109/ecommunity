@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   productForm: FormGroup;
   loggedIn: boolean = false;
 
-  allProducts : any ;
+  allProducts: any;
 
 
   ngOnInit(): void {
@@ -35,10 +35,8 @@ export class HomeComponent implements OnInit {
       productName: '',
       productBrand: ''
     })
-    this.userService.getAllData().subscribe((res : any)=>{
-      console.log(res);
+    this.userService.getAllData().subscribe((res: any) => {
       this.allProducts = res;
-
     })
 
   };
@@ -57,21 +55,15 @@ export class HomeComponent implements OnInit {
         this.toastr.error("At least one field is compulsory.");
         return;
       };
-  
+
       this.router.navigate(['/user/result'], { state: { data: res } });
-    });   
+    });
 
   };
 
-  explore(products : any){
-  this.router.navigate(['/user/review'],{state : {data : products}});    
+  explore(products: any) {
+    this.router.navigate(['/user/review'], { state: { data: products } });
   };
-  name = "";
-
-  getInput(event : Event){
-    console.log(event);
-    
-  }
 
 }
 

@@ -9,62 +9,29 @@
                         </div>
                         <div class="card p-5 d-flex flex-column gap-2">
 
-                            <form [formGroup]="reviewForm" >
-                            <label for="heading">Heading : </label>
-                            <input type="text" id="heading" class="form-control" formControlName="heading">
-                            @if(reviewForm.get('heading').touched){
-                                <div class="text-danger">
-                                    @if(reviewForm.get('heading').errors?.['required']){
-                                        <span>This is required.</span>
-                                    }
-                                </div>
-                            }
+                            <form #form="ngForm">
+                                <div>
+                                    <label for="heading">Heading :</label>
+                                    <input type="text" name="heading" id="heading" [(ngModel)]="reviewData.heading"minlength="5" maxlength="100" class="form-control" required />
 
-                            <label for="review">Review</label>
-                            <textarea id="review" class="form-control" formControlName="review"></textarea>
 
-                            @if(reviewForm.get('review').touched){
-                                <div class="text-danger">
-                                    @if(reviewForm.get('review').errors?.['required']){
-                                        <span>This is required</span>
-                                    }
-                                </div>
-                            }
-                            <div class="">
-                                <label for="rating">Rating</label>
-                            </div>
-                            <div class="text-center pt-2">
-                                <button class="btn btn-primary rounded" (click)="submitReview()">Submit Review</button>
-                            </div>
-                        </form>
-                            <!-- <label for="heading">Heading : </label>
-                            <input type="text" id="heading" [(ngModel)]="form.heading" #heading="ngModel" class="form-control" required>
-                            @if(heading.touched){
-                                <div class="text-danger">
-                                    @if(heading?.errors?.['required']){
-                                        <span>This is required.</span>
-                                    }
-                                </div>
-                            }
+                                    <label for="review">Review :</label>
+                                    <textarea id="description" name="description" [(ngModel)]="reviewData.description" class="form-control" minlength="10"
+                                        maxlength="300" required></textarea>
 
-                            <label for="review">Review</label>
-                            <textarea #review="ngModel" id="review" [(ngModel)]="form.review"  class="form-control" required></textarea>
 
-                            @if(review.touched){
-                                <div class="text-danger">
-                                    @if(review?.errors?.['required']){
-                                        <span>This is required</span>
-                                    }
+                                    <label for="review">Rating :</label>
+                                    <p-rating id="rating" name="rating"[(ngModel)]="reviewData.rating" aria-required="" />
+
                                 </div>
-                            }
-                            <div class="">
-                                <label for="rating">Rating</label>
-                            </div>
-                            <div class="text-center pt-2">
-                                <button class="btn btn-primary rounded" (click)="submitReview()">Submit Review</button>
-                            </div> -->
+
+                                <div class="text-center pt-2">
+                                    <button class="btn btn-primary rounded" (click)="submitReview()">Submit
+                                        Review</button>
+                                </div>
+                            </form>
                         </div>
-        
+
                     </div>
                 </div>
             </div>
