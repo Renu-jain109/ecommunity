@@ -34,6 +34,12 @@ export class ReviewService {
     let params = new HttpParams();
     params = params.append('code',code);
     return this.http.get(environment.API_URL+"/getcodecount",{params})
+  };
+
+  getByStatus(status : any){
+    let params = new HttpParams();
+    params = params.append("status",status);
+    return this.http.get(environment.API_URL+"/getbystatus",{params})
   }
   
 }

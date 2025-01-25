@@ -14,8 +14,17 @@ import { ReviewService } from '../../review.service';
 export class ResultComponent implements OnInit {
   reviewService = inject(ReviewService);
   resultList : any = [];
+  status : any = false;
 
   ngOnInit(): void {
-    // this.reviewService.getReview()
+    this.getByStatus("approved");
+    }
+
+  getByStatus(status : any){
+    this.reviewService.getByStatus(status).subscribe((res:any)=>{
+      console.log(res);
+      
+    })
   }
+
 }
