@@ -3,9 +3,9 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder,FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { UserService } from '../user.service';
 import { RatingModule } from 'primeng/rating';
 import { ReviewService } from '../../review.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-postreview',
@@ -17,6 +17,7 @@ import { ReviewService } from '../../review.service';
 export class PostreviewComponent implements OnInit {
   toastr = inject(ToastrService);
   router = inject(Router);
+  userService = inject(UserService);
   constructor(private fb: FormBuilder,
     private reviewService: ReviewService) { };
 
@@ -24,31 +25,45 @@ export class PostreviewComponent implements OnInit {
       heading : " ",
       description : " ",
       rating : null,
-      // code : null
+      code : '',
+      username : '',
+      status : false
       };
     
   ngOnInit(): void {
-    // const data = history.state.data;
+    this.getUserName();
+    const data = history.state.data;
     
-    // if(data){
-    //   this.reviewData.code = data;
-     
-    // }
+    if(data){
+      this.reviewData.code = data;     
+    }
+  }
+  getUserName(){
+    let token = localStorage.getItem('token');
+    this.userService.getUser(token).subscribe((res : any)=>{
+      
+      this.reviewData.username = res.username;      
+    })
   }
 
 
-  submitReview() {
-
-   const heading = this.reviewData.heading;
-   const description = this.reviewData.description;
-   const rating = this.reviewData.rating;    
-    // const code = this.reviewData.code;
-    
+  submitReview() {    
     
     this.reviewService.setReview(this.reviewData).subscribe((res : any)=>{
-      console.log(res);
-      
-    })
+
+      this.toastr.success("Review added successfully");
+      this.setDelay()
+    },
+    (error)=>{
+      this.toastr.error("Review not added");
+    }
+  )
+    }
+
+    setDelay(){
+      setInterval(()=>{
+        location.reload();
+      },2000);
     }
 
 

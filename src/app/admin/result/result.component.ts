@@ -1,14 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule} from '@angular/material/table';
+import { ReviewService } from '../../review.service';
 
 
 @Component({
   selector: 'app-result',
   standalone: true,
-  imports: [MatTableModule,],
+  imports: [MatTableModule,MatButtonModule],
   templateUrl: './result.component.html',
   styleUrl: './result.component.css'
 })
-export class ResultComponent {
+export class ResultComponent implements OnInit {
+  reviewService = inject(ReviewService);
   resultList : any = [];
+
+  ngOnInit(): void {
+    // this.reviewService.getReview()
+  }
 }

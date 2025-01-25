@@ -15,11 +15,20 @@ export class ReviewComponent implements OnInit {
   product: any;
   router = inject(Router);
   reviewService = inject(ReviewService)
+  reviewData : any = [];
+  rating : number = 0 ;
+  reviewCount : number = 0 ;
 
   ngOnInit(): void {
     this.product = history.state.data;
-    console.log(this.product);
-    this.getReview()
+    this.getReview();
+    this.getReviewCount();
+
+    this.reviewService.getSumRatings(this.product.code).subscribe((res:any)=>{
+      console.log(res);
+      this.rating = res;
+      
+    })
   }
 
   addReview() {
@@ -28,11 +37,30 @@ export class ReviewComponent implements OnInit {
 
   getReview(){
     const code = this.product.code;
+    console.log(code);
+    
     this.reviewService.getReview(code).subscribe((res :any)=>{
       console.log(res);
+      this.reviewData = res;
+      // if(this.reviewData > 1){
+      //   data
+      // }else{
+      //   this.reviewData
+ 
+      // }
+
+    })
+  };
+
+  getReviewCount(){
+    this.reviewService.getReviewCount(this.product.code).subscribe((res:any)=>{
+      console.log(res);
+      this.reviewCount = res;
       
     })
   }
+
+
 
 
 }

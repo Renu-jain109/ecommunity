@@ -12,8 +12,8 @@
                     <div class="">
                     <h3>{{product.name}}</h3>
                     <h5>{{ product.brand}}</h5>
-                    <p class="">review</p>
-                    <p class="">rating</p>
+                    <p class="">{{rating}}-Rating</p>
+                    <p class="">{{reviewCount}}-Review</p>
                     <h5> Description</h5>
                     <p>{{ product.description}}</p>
                 </div>
@@ -29,22 +29,22 @@
     <div class="row">
         <div class="col-12">
             <div class="wrapper">
-                <h5>Review</h5>
+                <h5>Reviews</h5>
             </div>
         </div>
     </div>
     <div class="row pt-3">
         <div class="col-12">
             <div class="wrapper">
-                <div class="border border-dark p-3 rounded d-flex  ">
-                    <div class="col-6">
-                        <h5>{{product.name}}</h5>
-                        <p>vch</p>
-                        <p>vch</p>
+                <div class="border border-dark p-3 rounded d-flex" *ngFor="let data of reviewData;$last">
+                    <div class="col-6" >
+                        <h5>{{data.heading }}</h5>
+                        <p>{{data.description}}</p>
+                        <p>{{data.username}}</p>
     
                     </div>
                     <div class="col-6 text-end">
-                       <span class="fw-bold">4</span> rating
+                       <span class="fw-bold" >{{data.rating}}</span> rating
                     </div>
                 
                 </div>

@@ -27,27 +27,6 @@ export class LoginComponent implements OnInit {
     });
   };
 
-  // onLogin(){
-  //   const json = {
-  //     username : this.loginForm.get('username')?.value,
-  //     password : this.loginForm.get('password')?.value,
-  //   };
-  //   this.userService.generateToken(json).subscribe((res : any)=>{
-  //     console.log(res);    
-  //       this.userService.login(res.jwtToken);
-  //       localStorage.setItem('user',JSON.stringify(json));
-
-  //     this.tostr.success("Login Successfully");
-  //      window.location.href='/';
-
-  //   },
-  //   (error)=>{
-  //     this.tostr.error("Invalid Login User");
-  //   }
-  // )
-  // };
-
-
 
   onLogin() {
     const json = {
@@ -57,10 +36,6 @@ export class LoginComponent implements OnInit {
     this.userService.generateToken(json).subscribe((res: any) => {
       console.log(res);
       this.userService.login(res.jwtToken);
-
-      // if (this.userService.isAuthenticated()) {
-      //   localStorage.setItem('username', this.loginForm.get('username').value);
-      // }
 
       this.tostr.success("Login Successfully");
       window.location.href = '/';
