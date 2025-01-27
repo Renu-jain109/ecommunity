@@ -26,9 +26,9 @@ export class ReviewService {
     return this.http.get(environment.API_URL+"/getratings",{params});
   };
 
-  getReviewStats(){
-    return this.http.get(environment.API_URL+"/getreviewcount");
-  }
+  // getReviewStats(){
+  //   return this.http.get(environment.API_URL+"/getreviewcount");
+  // }
 
   getReviewCount(code:any){
     let params = new HttpParams();

@@ -20,5 +20,15 @@ export class AdminService {
 
   logOutAdimn(){
     localStorage.removeItem("Admin Username");
-  }
+  };
+
+  approveReview(review : any){
+   return this.http.post(environment.API_URL+"/approve",review);
+  };
+
+  deleteReview(id:number){
+    let params = new HttpParams();
+    params = params.append('id',id);
+    return this.http.delete(environment.API_URL+"/deletereview",{params});
+  };
 }

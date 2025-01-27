@@ -1,55 +1,52 @@
-<table mat-table [dataSource]="resultList" class="mat-elevation-z8 mt-5 bg-secondary " >
+<div style="width: 100%; display: flex; justify-content: center;">
+<table mat-table [dataSource]="resultList" class="mat-elevation-z8 mt-5 custom-table" >
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
   
-    <!-- Position Column -->
-    <ng-container matColumnDef="index">
-      <th mat-header-cell *matHeaderCellDef class="matCell">S. No. </th>
-      <td mat-cell *matCellDef="let result;let i = index"> {{i+1}} </td>
-    </ng-container>
-  
     <!--  Product Code  -->
-    <ng-container matColumnDef="productCode">
-      <th mat-header-cell *matHeaderCellDef class="matCell"> Product Code </th>
-      <td mat-cell *matCellDef="let result"> {{result.productCode}} </td>
+    <ng-container matColumnDef="code">
+      <th mat-header-cell *matHeaderCellDef class="matCellHead"> Product Code </th>
+      <td mat-cell *matCellDef="let result" class="matCell"> {{result.code}} </td>
     </ng-container>
   
     <!-- Heading -->
     <ng-container matColumnDef="heading">
-      <th mat-header-cell *matHeaderCellDef class="matCell"> Heading </th>
-      <td mat-cell *matCellDef="let result"> {{result.heading}} </td>
+      <th mat-header-cell *matHeaderCellDef class="matCellHead"> Heading </th>
+      <td mat-cell *matCellDef="let result" class="matCell"> {{result.heading}} </td>
     </ng-container>
   
     <!-- Description -->
     <ng-container matColumnDef="description">
-      <th mat-header-cell *matHeaderCellDef class="matCell"> Description </th>
-      <td mat-cell *matCellDef="let result"> {{result.description}} </td>
+      <th mat-header-cell *matHeaderCellDef class="matCellHead"> Description </th>
+      <td mat-cell *matCellDef="let result" class="matCell"> {{result.description}} </td>
     </ng-container>
 
     <!-- Rating -->
     <ng-container matColumnDef="rating">
-      <th mat-header-cell *matHeaderCellDef class="matCell"> Rating </th>
-      <td mat-cell *matCellDef="let result"> {{result.rating}} </td>
+      <th mat-header-cell *matHeaderCellDef class="matCellHead"> Rating </th>
+      <td mat-cell *matCellDef="let result" class="matCell"> {{result.rating}} </td>
     </ng-container>
 
     <!-- Username -->
     <ng-container matColumnDef="username">
-      <th mat-header-cell *matHeaderCellDef class="matCell"> Username </th>
-      <td mat-cell *matCellDef="let result"> {{result.username}} </td>
+      <th mat-header-cell *matHeaderCellDef class="matCellHead"> Username </th>
+      <td mat-cell *matCellDef="let result" class="matCell"> {{result.username}} </td>
     </ng-container>
 
     <!-- buttons -->
     <ng-container matColumnDef="action">
-      <th mat-header-cell *matHeaderCellDef class="matCell"> Actions </th>
-      <td mat-cell *matCellDef="let result"> 
-        <button mat-raised-button>Aprove</button>
-        <button mat-raised-button>Delete</button>
+      <th mat-header-cell *matHeaderCellDef class="matCellHead"> Actions </th>
+      <td mat-cell *matCellDef="let result" class="matCell"> 
+
+        <button mat-raised-button (click)="approveReview(result)" class="bg-primary text-light py-1">Aprove</button>
+        <button mat-raised-button class="bg-danger text-light py-1 ms-2" (click)="deleteReview(result.id)">Delete</button>
             </td>
     </ng-container>
   
-    <tr mat-header-row *matHeaderRowDef="['index','productCode','heading','description','rating','username','action']"></tr>
-    <tr mat-row *matRowDef="let row; columns: ['index','productCode','heading','description','rating','username','action'];"></tr>
+    <tr mat-header-row *matHeaderRowDef="['code','heading','description','rating','username','action']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['code','heading','description','rating','username','action'];"></tr>
   </table>
+</div>
   
   

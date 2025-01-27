@@ -5,21 +5,21 @@
 
                 <div class="col-6 d-flex flex-row justify-content-center">
                     <div class="image">
-                        <img src="{{product.image}}" alt="" >
+                        <img src="{{product.image}}" alt="">
                     </div>
                 </div>
                 <div class="col-6 ">
                     <div class="">
-                    <h3>{{product.name}}</h3>
-                    <h5>{{ product.brand}}</h5>
-                    <p class="">{{rating}}-Rating</p>
-                    <p class="">{{reviewCount}}-Review</p>
-                    <h5> Description</h5>
-                    <p>{{ product.description}}</p>
-                </div>
-                <div class="pt-3">
-                    <button class="btn btn-primary px-3 " (click)="addReview()">Add a review</button>
-                </div>
+                        <h3>{{product.name}}</h3>
+                        <h5>{{ product.brand}}</h5>
+                        <p class="">{{rating}}-Rating</p>
+                        <p class="">{{reviewCount}}-Review</p>
+                        <h5> Description</h5>
+                        <p>{{ product.description}}</p>
+                    </div>
+                    <div class="pt-3">
+                        <button class="btn btn-primary px-3 " (click)="addReview()">Add a review</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -35,19 +35,40 @@
     </div>
     <div class="row pt-3">
         <div class="col-12">
-            <div class="wrapper">
-                <div class="border border-dark p-3 rounded d-flex" *ngFor="let data of reviewData;$last">
-                    <div class="col-6" >
+            <div class="wrapper d-flex flex-column gap-2">
+                <div class="border border-dark p-3 rounded d-flex">
+                    @for(data of reviewData;track data){
+                    @if($last){
+
+                    <div class="col-6">
                         <h5>{{data.heading }}</h5>
                         <p>{{data.description}}</p>
                         <p>{{data.username}}</p>
-    
                     </div>
                     <div class="col-6 text-end">
-                       <span class="fw-bold" >{{data.rating}}</span> rating
-                    </div>
-                
+                        <span class="fw-bold">{{data.rating}}</span> rating
+                    </div>}
+                    }
+
                 </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end pe-4">
+                    <button class="border border-0 btn btn-none fw-bold fs-4" (click)="toggleState()">View all</button>
+                </div>
+                @if(isToggled){
+
+                <div class="border border-dark p-3 rounded d-flex" *ngFor="let data of reviewData">
+                    <div class="col-6">
+                        <h5>{{data.heading }}</h5>
+                        <p>{{data.description}}</p>
+                        <p>{{data.username}}</p>
+
+                    </div>
+                    <div class="col-6 text-end">
+                        <span class="fw-bold">{{data.rating}}</span> rating
+                    </div>
+                </div>
+                }
+
             </div>
         </div>
     </div>

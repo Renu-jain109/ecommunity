@@ -1,9 +1,16 @@
-/* .mat-header-cell,.mat-cell{
-    color: white !important;
-} */
-  /* th{
+.matCellHead{
     color: white;
- } */
-.matCell{
-    color: white;
+    font-size: large;
+    background-color: #444444 !important;
 }
+.matCell{
+    font-size: medium;
+    
+}
+
+.custom-table {
+  width: 75% !important;
+  min-width: 75%;
+}
+
+

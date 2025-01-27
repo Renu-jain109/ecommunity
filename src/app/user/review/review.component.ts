@@ -3,6 +3,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ReviewService } from '../../review.service';
 
+
 @Component({
   selector: 'app-review',
   standalone: true,
@@ -18,6 +19,8 @@ export class ReviewComponent implements OnInit {
   reviewData : any = [];
   rating : number = 0 ;
   reviewCount : number = 0 ;
+  isToggled : boolean = false;
+
 
   ngOnInit(): void {
     this.product = history.state.data;
@@ -26,9 +29,8 @@ export class ReviewComponent implements OnInit {
 
     this.reviewService.getSumRatings(this.product.code).subscribe((res:any)=>{
       console.log(res);
-      this.rating = res;
-      
-    })
+      this.rating = res;      
+    });
   }
 
   addReview() {
@@ -42,12 +44,6 @@ export class ReviewComponent implements OnInit {
     this.reviewService.getReview(code).subscribe((res :any)=>{
       console.log(res);
       this.reviewData = res;
-      // if(this.reviewData > 1){
-      //   data
-      // }else{
-      //   this.reviewData
- 
-      // }
 
     })
   };
@@ -58,9 +54,12 @@ export class ReviewComponent implements OnInit {
       this.reviewCount = res;
       
     })
-  }
+  };
+  
+  toggleState(){
+    this.isToggled = !this.isToggled;
 
-
+  };
 
 
 }
