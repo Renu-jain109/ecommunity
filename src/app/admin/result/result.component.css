@@ -1,16 +1,15 @@
-.matCellHead{
-    color: white;
-    font-size: large;
-    background-color: #444444 !important;
+.matCellHead {
+  color: white;
+  font-size: large;
+  background-color: #444444 !important;
 }
-.matCell{
-    font-size: medium;
-    
+
+.matCell {
+  font-size: medium;
+
 }
 
 .custom-table {
   width: 75% !important;
   min-width: 75%;
 }
-
-

@@ -8,38 +8,34 @@ import { Observable } from 'rxjs';
 })
 export class ReviewService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  setReview(reviewData : any){
-    return this.http.post(environment.API_URL+"/setreview",reviewData);
+  setReview(reviewData: any) {
+    return this.http.post(environment.API_URL + "/setreview", reviewData);
   };
 
-  getReview(code: any):Observable<any>{
+  getReview(code: any): Observable<any> {
     let params = new HttpParams();
-    params = params.append('code',code);
-    return this.http.get(environment.API_URL+"/getreview",{params});
+    params = params.append('code', code);
+    return this.http.get(environment.API_URL + "/getreview", { params });
   };
 
-  getSumRatings(code:any){
+  getSumRatings(code: any) {
     let params = new HttpParams();
-    params = params.append('code',code);
-    return this.http.get(environment.API_URL+"/getratings",{params});
+    params = params.append('code', code);
+    return this.http.get(environment.API_URL + "/getratings", { params });
   };
 
-  // getReviewStats(){
-  //   return this.http.get(environment.API_URL+"/getreviewcount");
-  // }
-
-  getReviewCount(code:any){
+  getReviewCount(code: any) {
     let params = new HttpParams();
-    params = params.append('code',code);
-    return this.http.get(environment.API_URL+"/getcodecount",{params})
+    params = params.append('code', code);
+    return this.http.get(environment.API_URL + "/getcodecount", { params })
   };
 
-  getByStatus(status : any){
+  getByStatus(status: any) {
     let params = new HttpParams();
-    params = params.append("status",status);
-    return this.http.get(environment.API_URL+"/getbystatus",{params})
+    params = params.append("status", status);
+    return this.http.get(environment.API_URL + "/getbystatus", { params })
   }
-  
+
 }

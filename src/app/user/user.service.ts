@@ -7,65 +7,72 @@ import { environment } from '../../environments/environment.development';
   providedIn: 'root'
 })
 export class UserService {
-  url="http://localhost:8086";
+  url = "http://localhost:8086";
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  ragistration (object : any) : Observable <any>{
-    return this.http.post(environment.API_URL+"/register",object);
-
+  ragistration(object: any): Observable<any> {
+    return this.http.post(environment.API_URL + "/register", object);
   };
 
-  login(object : any) {
-    localStorage.setItem("token",object);
+  login(object: any) {
+    localStorage.setItem("token", object);
     return true;
   };
 
-  generateToken (object : any) : Observable <any>{
-    return this.http.post(environment.API_URL+"/token",object)
+  generateToken(object: any): Observable<any> {
+    return this.http.post(environment.API_URL + "/token", object)
   };
 
-  getToken(){
+  getToken() {
     return localStorage.getItem('token');
-  }
+  };
 
-  getUser(token : any) : Observable<any>{
+  getUser(token: any): Observable<any> {
     let params = new HttpParams();
-    params= params.append('token',token);
-    return this.http.get(environment.API_URL+"/getUserName",{params});
-  }
+    params = params.append('token', token);
+    return this.http.get(environment.API_URL + "/getUserName", { params });
+  };
 
-  isAuthenticated() : boolean{
+  isAuthenticated(): boolean {
     return !!localStorage.getItem("token");
   };
 
-  logOut(){
+  logOut() {
     localStorage.removeItem("token");
   };
 
-  addProduct(object : any) : Observable <any>{
-    // return this.http.post(environment.API_URL+"/addproduct",object);
-   return this.http.post(`${this.url}/addproduct`,object);
+  addProduct(object: any): Observable<any> {
+    return this.http.post(`${this.url}/addproduct`, object);
   };
 
-  searchProduct(object : any) : Observable <any>{
+  searchProduct(object: any): Observable<any> {
     let params = new HttpParams();
-    if(object.code ){
-      params = params.append('code',object.code);      
+    if (object.code) {
+      params = params.append('code', object.code);
     }
-    if(object.name ){
-      params = params.append('name',object.name);      
+    if (object.name) {
+      params = params.append('name', object.name);
     }
-    if(object.brand ){
-      params = params.append('brand',object.brand);      
+    if (object.brand) {
+      params = params.append('brand', object.brand);
     }
-    return this.http.get(environment.API_URL+"/getproduct",{params});
+    return this.http.get(environment.API_URL + "/getproduct", { params });
   };
 
 
-  getAllData() : Observable<any>{
-    return this.http.get(environment.API_URL+"/getalldata");
-
+  getAllData(): Observable<any> {
+    return this.http.get(environment.API_URL + "/getalldata");
   };
 
+  getProductCount(): Observable<any> {
+    return this.http.get(environment.API_URL + "/getproductcount");
+  };
+
+  getCountUser(): Observable<any> {
+    return this.http.get(environment.API_URL + "/get");
+  };
+  getreviewcount(): Observable<any> {
+    return this.http.get(environment.API_URL + "/getreviewcount");
+  };
 }

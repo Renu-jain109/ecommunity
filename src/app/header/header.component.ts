@@ -22,7 +22,6 @@ export class HeaderComponent implements OnInit {
 
   adminUsername: string = localStorage.getItem("Admin Username");
 
-
   ngOnInit(): void {
     if (this.userService.isAuthenticated()) {
       this.loggedIn = true;
@@ -39,19 +38,19 @@ export class HeaderComponent implements OnInit {
     this.userService.getUser(token).subscribe((res: any) => {
       this.user = res.username;
     })
-  }
+  };
 
   logOut() {
     this.userService.logOut();
     localStorage.clear();
     this.loggedIn = false;
     window.location.href = "/";
-  }
+  };
 
   logOutAdmin() {
     this.adminService.logOutAdimn();
     this.logginAdmin = false;
     window.location.href = "/";
-  }
+  };
 
 }

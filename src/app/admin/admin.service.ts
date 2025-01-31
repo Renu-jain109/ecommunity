@@ -8,27 +8,27 @@ import { environment } from '../../environments/environment.development';
 })
 export class AdminService {
 
-  constructor(private http : HttpClient) { };
+  constructor(private http: HttpClient) { };
 
-  loginAdmin(object : any){
+  loginAdmin(object: any) {
     console.log(object);
-    
-   let params = new HttpParams();
-   params = params.append('username',object.username);
-   return this.http.get(environment.API_URL+"/getAdmin",{params});
+
+    let params = new HttpParams();
+    params = params.append('username', object.username);
+    return this.http.get(environment.API_URL + "/getAdmin", { params });
   };
 
-  logOutAdimn(){
+  logOutAdimn() {
     localStorage.removeItem("Admin Username");
   };
 
-  approveReview(review : any){
-   return this.http.post(environment.API_URL+"/approve",review);
+  approveReview(review: any) {
+    return this.http.post(environment.API_URL + "/approve", review);
   };
 
-  deleteReview(id:number){
+  deleteReview(id: number) {
     let params = new HttpParams();
-    params = params.append('id',id);
-    return this.http.delete(environment.API_URL+"/deletereview",{params});
+    params = params.append('id', id);
+    return this.http.delete(environment.API_URL + "/deletereview", { params });
   };
 }

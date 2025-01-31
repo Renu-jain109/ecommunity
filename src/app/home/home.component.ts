@@ -18,13 +18,13 @@ export class HomeComponent implements OnInit {
   formBuilder = inject(FormBuilder);
   router = inject(Router);
   toastr = inject(ToastrService);
-
   userService = inject(UserService);
   productForm: FormGroup;
   loggedIn: boolean = false;
-
   allProducts: any;
-
+  productsCount: number;
+  reviewcount: number;
+  countUser: number;
 
   ngOnInit(): void {
     if (this.userService.isAuthenticated()) {
@@ -38,6 +38,9 @@ export class HomeComponent implements OnInit {
     this.userService.getAllData().subscribe((res: any) => {
       this.allProducts = res;
     })
+    this.getProductCount();
+    this.getCountUser();
+    this.getreviewcount();
 
   };
 
@@ -49,13 +52,11 @@ export class HomeComponent implements OnInit {
       brand: this.productForm.get('productBrand').value
     }
     this.userService.searchProduct(json).subscribe((res: any) => {
-      console.log(res);
 
       if (!json.name && !json.code && !json.brand) {
         this.toastr.error("At least one field is compulsory.");
         return;
       };
-
       this.router.navigate(['/user/result'], { state: { data: res } });
     });
 
@@ -64,6 +65,22 @@ export class HomeComponent implements OnInit {
   explore(products: any) {
     this.router.navigate(['/user/review'], { state: { data: products } });
   };
+
+  getProductCount() {
+    this.userService.getProductCount().subscribe((res: any) => {
+      this.productsCount = res;
+    })
+  };
+  getCountUser() {
+    this.userService.getCountUser().subscribe((res: any) => {
+      this.countUser = res;
+    })
+  }
+  getreviewcount() {
+    this.userService.getreviewcount().subscribe((res: any) => {
+      this.reviewcount = res;
+    })
+  }
 
 }
 

@@ -50,8 +50,6 @@ export class AddproductComponent implements OnInit {
       this.productArr.push(res);
       this.toastr.success("Add Product Successfully");
       console.log(this.router.navigate(['/user/result'], { state: { data: this.productArr } }));
-
-
     },
       (error) => {
         this.toastr.error("Product not Save");
@@ -59,7 +57,7 @@ export class AddproductComponent implements OnInit {
 
       })
   };
-  reset(){
+  reset() {
     this.addProductForm.reset();
   }
 }

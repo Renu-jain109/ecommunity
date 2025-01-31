@@ -2,29 +2,32 @@
     <div class="row">
         <div class="col-12">
             <div class="wrapper bg-body-tertiary">
-
                 <div class="px-5 py-4 bg-body-tertiary">
                     <div class="pb-3">
                         <label for="filter">Filter</label>
                     </div>
                     <div class="">
-                        <input type="text" name="filter" id="filter" placeholder="" class="w-100">
-
+                        <select [(ngModel)]="dropDown.value" class="w-100">
+                            <!-- <option value="brand">Brand</option> -->
+                            <option value="name">Name</option>
+                            <option value="code">Code</option>
+                        </select>
                     </div>
                 </div>
             </div>
         </div>
         <div class=" d-flex flex-row gap-3 pt-2 ps-5 ">
-            <button class="btn btn-primary">Apply Filter</button>
+            <button class="btn btn-primary" (click)="applyFilter()">Apply Filter</button>
             <button class="btn btn-secondary" routerLink="/user/addproduct">Add a Product</button>
         </div>
 
         <div class="col-12">
             <div class="wrapper d-flex flex-row flex-wrap gap-4 justify-content-center align-items-center py-5 w-100">
+
                 <!-- for loop -->
                 <mat-card [style]="{ width: '20rem', overflow: 'hidden', height:'21rem' }"
                     class="card-size bg-body-tertiary" *ngFor="let data of productData">
-                    <div class="d-flex flex-row justify-content-center pt-2"  >
+                    <div class="d-flex flex-row justify-content-center pt-2">
                         <div class="image ">
                             <img src={{data.image}} alt="">
                         </div>
@@ -37,7 +40,6 @@
                     <button class="exploreBtn fs-4 text-white" (click)="explore(data)">Explore</button>
 
                 </mat-card>
-
             </div>
         </div>
     </div>

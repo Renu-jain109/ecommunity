@@ -8,8 +8,13 @@ import { UserresultComponent } from './user/userresult/userresult.component';
 import { AddproductComponent } from './user/addproduct/addproduct.component';
 import { ReviewComponent } from './user/review/review.component';
 import { PostreviewComponent } from './user/postreview/postreview.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 export const routes: Routes = [
+    {
+        path:'pagenotfound',
+        component:PagenotfoundComponent
+    },
     {
         path:'',
         component:HomeComponent
@@ -45,5 +50,9 @@ export const routes: Routes = [
     {
         path:'user/postreview',
         component:PostreviewComponent
+    },
+    {
+        path:'**',
+        redirectTo:'pagenotfound'
     }
 ];

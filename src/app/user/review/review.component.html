@@ -36,10 +36,10 @@
     <div class="row pt-3">
         <div class="col-12">
             <div class="wrapper d-flex flex-column gap-2">
-                <div class="border border-dark p-3 rounded d-flex">
+                <div class="border border-dark p-3 rounded d-flex" *ngIf="reviewData?.length > 0; divShowHide">
                     @for(data of reviewData;track data){
-                    @if($last){
 
+                    @if($last){
                     <div class="col-6">
                         <h5>{{data.heading }}</h5>
                         <p>{{data.description}}</p>

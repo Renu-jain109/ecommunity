@@ -12,16 +12,16 @@
                             <form #form="ngForm">
                                 <div>
                                     <label for="heading">Heading :</label>
-                                    <input type="text" name="heading" id="heading" [(ngModel)]="reviewData.heading"minlength="5" maxlength="100" class="form-control" required />
-
+                                    <input type="text" name="heading" id="heading" [(ngModel)]="reviewData.heading"
+                                        minlength="5" maxlength="100" class="form-control" required />
 
                                     <label for="review">Review :</label>
-                                    <textarea id="description" name="description" [(ngModel)]="reviewData.description" class="form-control" minlength="10"
-                                        maxlength="300" required></textarea>
-
+                                    <textarea id="description" name="description" [(ngModel)]="reviewData.description"
+                                        class="form-control" minlength="10" maxlength="300" required></textarea>
 
                                     <label for="review">Rating :</label>
-                                    <p-rating id="rating" name="rating"[(ngModel)]="reviewData.rating" aria-required="" />
+                                    <p-rating id="rating" name="rating" [(ngModel)]="reviewData.rating"
+                                        aria-required="" />
 
                                 </div>
 

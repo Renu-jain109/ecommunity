@@ -16,10 +16,11 @@ export class ReviewComponent implements OnInit {
   product: any;
   router = inject(Router);
   reviewService = inject(ReviewService)
-  reviewData : any = [];
-  rating : number = 0 ;
-  reviewCount : number = 0 ;
-  isToggled : boolean = false;
+  reviewData: any = [];
+  rating: number = 0;
+  reviewCount: number = 0;
+  isToggled: boolean = false;
+  divShowHide: boolean = false;
 
 
   ngOnInit(): void {
@@ -27,39 +28,31 @@ export class ReviewComponent implements OnInit {
     this.getReview();
     this.getReviewCount();
 
-    this.reviewService.getSumRatings(this.product.code).subscribe((res:any)=>{
-      console.log(res);
-      this.rating = res;      
+    this.reviewService.getSumRatings(this.product.code).subscribe((res: any) => {
+      this.rating = res;
     });
-  }
+  };
 
   addReview() {
-    this.router.navigate(['/user/postreview'],{state : {data:this.product.code}});
+    this.router.navigate(['/user/postreview'], { state: { data: this.product.code } });
   }
 
-  getReview(){
+  getReview() {
     const code = this.product.code;
-    console.log(code);
-    
-    this.reviewService.getReview(code).subscribe((res :any)=>{
-      console.log(res);
+    this.reviewService.getReview(code).subscribe((res: any) => {
       this.reviewData = res;
-
     })
   };
 
-  getReviewCount(){
-    this.reviewService.getReviewCount(this.product.code).subscribe((res:any)=>{
-      console.log(res);
+  getReviewCount() {
+    this.reviewService.getReviewCount(this.product.code).subscribe((res: any) => {
       this.reviewCount = res;
-      
     })
   };
-  
-  toggleState(){
+
+  toggleState() {
     this.isToggled = !this.isToggled;
 
   };
-
 
 }

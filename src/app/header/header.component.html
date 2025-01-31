@@ -8,9 +8,10 @@
 
                 </div>
                 <div class="">
-                    <a class="btn fs-4 me-3" *ngIf="loggedIn" > User : {{ user | userpipe}}</a>
-                    <a class="btn fs-4 me-3" *ngIf="logginAdmin" > Admin User : {{ adminUsername | userpipe}}</a>
+                    <a class="btn fs-4 me-3" *ngIf="loggedIn"> User : {{ user | userpipe}}</a>
+                    <a class="btn fs-4 me-3" *ngIf="logginAdmin"> Admin User : {{ adminUsername | userpipe}}</a>
 
+                    <a class="btn fs-4 " routerLink="/" *ngIf="(!loggedIn) && (!logginAdmin)">Home</a>
                     <a class="btn fs-4 " routerLink="/admin/login" *ngIf="(!loggedIn) && (!logginAdmin)">Admin Login</a>
 
                     <a class="btn fs-4" routerLink="user/login" *ngIf="(!loggedIn) && (!logginAdmin)">Login</a>
@@ -19,10 +20,9 @@
 
                     <a class="btn fs-4" *ngIf="loggedIn" (click)="logOut()">Log Out</a>
                     <a class="btn fs-4" *ngIf="logginAdmin" (click)="logOutAdmin()">Log Out</a>
-        
+
                 </div>
             </div>
-        </div>  
+        </div>
     </div>
-  </nav>
-
+</nav>
